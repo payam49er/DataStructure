@@ -4,3 +4,9 @@ c:\users\payam\documents\visual studio 2012\Projects\LinkedList\LinkedList\bin\D
 c:\users\payam\documents\visual studio 2012\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache
 c:\users\payam\documents\visual studio 2012\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.exe
 c:\users\payam\documents\visual studio 2012\Projects\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
+C:\DataStructure\LinkedList\bin\Debug\LinkedList.exe.config
+C:\DataStructure\LinkedList\obj\Debug\LinkedList.exe
+C:\DataStructure\LinkedList\obj\Debug\LinkedList.pdb
+C:\DataStructure\LinkedList\bin\Debug\LinkedList.exe
+C:\DataStructure\LinkedList\bin\Debug\LinkedList.pdb
+C:\DataStructure\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache

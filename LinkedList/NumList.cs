@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LinkedList;
 
 namespace LinkedList
@@ -12,21 +8,30 @@ namespace LinkedList
     {
         public static void Main()
         {
-            
+
             Numbers mylist = new Numbers();
             Console.WriteLine("Please insert your first list of numbers:");
             string input = Console.ReadLine();
             var myvalues = mylist.CreateListNumber(input);
-          
-         
-            Console.WriteLine("The elements on the list are:{0}",myvalues);
+
+
+            Console.WriteLine("The elements in the list are:");
+            mylist.Display(myvalues);
+
+            Console.WriteLine("Please insert your second list of numbers:");
+            string secondinput = Console.ReadLine();
+            var secondvalues = mylist.CreateListNumber(secondinput);
+            Console.WriteLine("The elements in your second list are:");
+            mylist.Display(secondvalues);
 
             var count = myvalues.Size();
-            Console.WriteLine("the size of list is:{0}", count);
-         
-            
+            Console.WriteLine("the size of first list is:{0}", count);
+
+            var secondcount = secondvalues.Size();
+            Console.WriteLine("the size of second list is:{0}", secondcount);
+
             Console.ReadLine();
-            
+
         }
     }
 }
