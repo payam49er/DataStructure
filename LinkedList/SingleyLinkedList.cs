@@ -17,12 +17,12 @@ namespace LinkedList
         public SingleyLinkedList(string listName)
         {
             name = listName;
-            firstNode = lastNode = null;
+           firstNode = lastNode = null;
         }
 
         //construct empty list with list as its name
         public SingleyLinkedList()
-            : this("list")
+            : this("Test")
         {
         }
 
@@ -161,28 +161,40 @@ namespace LinkedList
             return 0;
 
         }
-              
-        //method to multiply elements of the one list together
-
-        public void MultiplyOneList()
+       // Define method Get() that can get elements in the linkedlist return them
+        public object GetValue(int index)
         {
-            Node current = firstNode;
-            if (firstNode != null)
+            if (index == 0)
             {
-                //the details of your multiplication method
-                while (current != null)
-                {
-                    var multiple = current.Data;
-                }
-
+                return firstNode.Data;
             }
             else
             {
-                Console.WriteLine("Your list {0} is empty!", name);
+                Node current = firstNode;
+                int currentIndex = 0;
+                while (current != null)
+                {
+                    currentIndex++;
+                    current = current.Link;
+                    if (currentIndex == index)
+                    {
+                        return current.Data;
+                    }
+                }
+                return null;
             }
+
+            
         }
+        // define method GetNode, that returns value of nodes
+      public int PassCarryOver(SingleyLinkedList bufferList)
+      {
+         int current =(int) bufferList.firstNode.Data;
+          if(current >=10)
+          {
+              //add mode of current to a linked list,and pass the carry over to the next node
 
-
+             
 
     } // end of class SingleyLinkedList
 }

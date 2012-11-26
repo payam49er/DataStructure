@@ -11,26 +11,35 @@ namespace LinkedList
 
             Numbers mylist = new Numbers();
             Console.WriteLine("Please insert your first list of numbers:");
-            string input = Console.ReadLine();
-            var myvalues = mylist.CreateListNumber(input);
+            string input1 = Console.ReadLine();
+            var firstvalues = mylist.CreateList(input1);
 
 
             Console.WriteLine("The elements in the list are:");
-            mylist.Display(myvalues);
+            mylist.Display(firstvalues);
 
             Console.WriteLine("Please insert your second list of numbers:");
-            string secondinput = Console.ReadLine();
-            var secondvalues = mylist.CreateListNumber(secondinput);
+            string input2 = Console.ReadLine();
+            var secondvalues = mylist.CreateList(input2);
             Console.WriteLine("The elements in your second list are:");
             mylist.Display(secondvalues);
 
-            var count = myvalues.Size();
+            var count = firstvalues.Size();
             Console.WriteLine("the size of first list is:{0}", count);
 
             var secondcount = secondvalues.Size();
             Console.WriteLine("the size of second list is:{0}", secondcount);
 
-            Console.ReadLine();
+            //var indexedvalue = firstvalues.Get(2);
+            //Console.WriteLine("the value of index 2 is:{0}", indexedvalue);
+
+           //add the list to each other
+             SingleyLinkedList result = mylist.AddLists(firstvalues, secondvalues);
+             Console.WriteLine("The addition result is:");
+             result.Display(result);
+
+
+           Console.ReadLine();
 
         }
     }

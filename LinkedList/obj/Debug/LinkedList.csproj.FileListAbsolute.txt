@@ -10,3 +10,9 @@ C:\DataStructure\LinkedList\obj\Debug\LinkedList.pdb
 C:\DataStructure\LinkedList\bin\Debug\LinkedList.exe
 C:\DataStructure\LinkedList\bin\Debug\LinkedList.pdb
 C:\DataStructure\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache
+E:\Csharp\LinkedList\LinkedList\bin\Debug\LinkedList.exe.config
+E:\Csharp\LinkedList\LinkedList\obj\Debug\LinkedList.exe
+E:\Csharp\LinkedList\LinkedList\obj\Debug\LinkedList.pdb
+E:\Csharp\LinkedList\LinkedList\obj\Debug\LinkedList.csprojResolveAssemblyReference.cache
+E:\Csharp\LinkedList\LinkedList\bin\Debug\LinkedList.exe
+E:\Csharp\LinkedList\LinkedList\bin\Debug\LinkedList.pdb
