@@ -187,11 +187,11 @@ namespace LinkedList
             
         }
         // define method GetNode, that returns value of nodes
-      public int PassCarryOver(SingleyLinkedList bufferList)
-      {
-         int current =(int) bufferList.firstNode.Data;
-          if(current >=10)
-          {
+      //public int PassCarryOver(SingleyLinkedList bufferList)
+      //{
+      //   int current =(int) bufferList.firstNode.Data;
+      //    if(current >=10)
+      //    {
               //add mode of current to a linked list,and pass the carry over to the next node
 
              

@@ -36,43 +36,60 @@ namespace LinkedList
         //method to add two linkedlist elements to each other, the return is in the form of a string 
         public SingleyLinkedList AddLists(SingleyLinkedList list1, SingleyLinkedList list2)
         {
+            //create a buffeer linked list that contains only added numbers
+            SingleyLinkedList bufferList = new SingleyLinkedList();
+            SingleyLinkedList finalList = new SingleyLinkedList();
 
-            SingleyLinkedList finalValue = new SingleyLinkedList();
-      
-            
-            // using Get and index is not going to work, I have to use Node and node.link to do the addition
-           
-            
-            for (int i = 0; i < list1.Size(); i++)
+            //finding the bigger list size
+            int sizeList1 = list1.Size();
+            int sizeList2 = list2.Size();
+            int biggerSize = Math.Max(sizeList1, sizeList2);
+            //equalizing the size of both lists, making math operations easier
+            if(sizeList1 > sizeList2)
             {
+                for(int i=0; i<(sizeList1-sizeList2);i++)
+                {
 
+                list2.InsertAtTail(0);
+                }
+            }
+            else if(sizeList2 > sizeList1)
+            {
+                for(int i=0; i <(sizeList2-sizeList1);i++)
+                {
+                list1.InsertAtTail(0);
+                }
+            }
+
+            for (int i = 0; i < biggerSize; i++)
+            {
                 int A = Convert.ToInt32(list1.GetValue(i));
                 int B = Convert.ToInt32(list2.GetValue(i));
+                int AddedAB = A + B;
+                bufferList.InsertAtTail(AddedAB);
+            }
+           // return bufferList;
 
-                int addedInts = A + B;
-                int carryover = addedInts >= 10 ? 1 : 0;
 
-                int noCarry = addedInts % 10;
-                finalValue.InsertAtTail(noCarry);
-                if (i + 1 < list1.Size())
+            for (int i = 0; i < bufferList.Size(); i++)
+            {
+                int firstvalue = Convert.ToInt32(bufferList.GetValue(i));
+                if (firstvalue >= 10)
                 {
-                    int C = Convert.ToInt32(list1.GetValue(i + 1));
-                    int D = Convert.ToInt32(list2.GetValue(i + 1));
-                    int addedCD = C + D + carryover;
-                    finalValue.InsertAtTail(addedCD % 10);
+                    int carryOver = 1;
+                    while (i + 1 <= bufferList.Size())
+                    {
+                        int nextValue = Convert.ToInt32(bufferList.GetValue(i + 1)) + carryOver;
+                        finalList.InsertAtFront(nextValue);
+                    }
                 }
-                else if (i + 1 >= list1.Size())
+                else
                 {
-                    
-                    finalValue.InsertAtTail(addedInts);
+                    finalList.InsertAtFront(firstvalue);
                 }
                 
-
-                
-             }
-            return finalValue;
-                    
-
+            }
+            return finalList;
         }
         
     }
