@@ -67,28 +67,26 @@ namespace LinkedList
                 int B = Convert.ToInt32(list2.GetValue(i));
                 int AddedAB = A + B;
                 bufferList.InsertAtTail(AddedAB);
-            }
-           // return bufferList;
-
-
-            for (int i = 0; i < bufferList.Size(); i++)
-            {
-                int firstvalue = Convert.ToInt32(bufferList.GetValue(i));
-                if (firstvalue >= 10)
-                {
-                    int carryOver = 1;
-                    while (i + 1 <= bufferList.Size())
-                    {
-                        int nextValue = Convert.ToInt32(bufferList.GetValue(i + 1)) + carryOver;
-                        finalList.InsertAtFront(nextValue);
-                    }
-                }
-                else
-                {
-                    finalList.InsertAtFront(firstvalue);
-                }
                 
             }
+            //these two lines are just for testing 
+            Console.WriteLine("This is the buffer lis:");
+            bufferList.Display(bufferList);
+           // return bufferList;
+
+            int carry = 0;
+            for (int i = 0; i < bufferList.Size(); i++)
+            {
+                int sum = Convert.ToInt32(bufferList.GetValue(i))+carry;
+                finalList.InsertAtFront(sum%10);
+                carry =sum/10;
+            }
+
+               while(carry > 0)
+               {
+                   finalList.InsertAtFront(carry%10);
+                   carry = carry / 10;
+               }
             return finalList;
         }
         
