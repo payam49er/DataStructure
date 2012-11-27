@@ -30,14 +30,17 @@ namespace LinkedList
             var secondcount = secondvalues.Size();
             Console.WriteLine("the size of second list is:{0}", secondcount);
 
-            //var indexedvalue = firstvalues.Get(2);
-            //Console.WriteLine("the value of index 2 is:{0}", indexedvalue);
-
-           //add the list to each other
-             SingleyLinkedList result = mylist.AddLists(firstvalues, secondvalues);
+             SingleyLinkedList addResult = mylist.AddLists(firstvalues, secondvalues);
              Console.WriteLine("The addition result is:");
-             result.Display(result);
+             mylist.Display(addResult);
 
+             SingleyLinkedList subtracLists = mylist.Subtrac(firstvalues, secondvalues);
+             Console.WriteLine("The Subtraction result is:");
+             mylist.Display(subtracLists);
+
+             SingleyLinkedList multipliedLists = mylist.Multiply(firstvalues, secondvalues);
+             Console.WriteLine("the Multiplication result is:");
+             mylist.Display(multipliedLists);
 
            Console.ReadLine();
 

@@ -70,7 +70,7 @@ namespace LinkedList
                 
             }
             //these two lines are just for testing 
-            Console.WriteLine("This is the buffer lis:");
+            Console.WriteLine("This is the buffer list:");
             bufferList.Display(bufferList);
            // return bufferList;
 
@@ -89,6 +89,70 @@ namespace LinkedList
                }
             return finalList;
         }
-        
+
+
+        //this method subtracs two linked lists digits from each other, first list parameter has to be bigger than the second
+
+        public SingleyLinkedList Subtrac(SingleyLinkedList list1, SingleyLinkedList list2)
+        {
+            
+            SingleyLinkedList subtractionList = new SingleyLinkedList();
+            
+            //finding the bigger list size
+            int sizeList1 = list1.Size();
+            int sizeList2 = list2.Size();
+            int biggerSize = Math.Max(sizeList1, sizeList2);
+            //equalizing the size of both lists, making math operations easier
+            if (sizeList1 > sizeList2)
+            {
+                for (int i = 0; i < (sizeList1 - sizeList2); i++)
+                {
+
+                    list2.InsertAtTail(0);
+                }
+            }
+            else if (sizeList2 > sizeList1)
+            {
+                for (int i = 0; i < (sizeList2 - sizeList1); i++)
+                {
+                    list1.InsertAtTail(0);
+                }
+            }
+
+            int carry = 0;
+            for (int i = 0; i < biggerSize; i++)
+            {
+                int A = Convert.ToInt32(list1.GetValue(i))+carry;
+                int B = Convert.ToInt32(list2.GetValue(i));
+                if (A < B)
+                {
+                    A = A + 10;
+                    carry = -1;
+                }
+                int SubtractedAB = A - B;
+                subtractionList.InsertAtFront(SubtractedAB);
+            }
+            return subtractionList;
+        }
+           
+        // this method multiplies two numbers that are held in singly linked list
+        public SingleyLinkedList Multiply(SingleyLinkedList list1, SingleyLinkedList list2)
+        {
+            SingleyLinkedList finalList = new SingleyLinkedList();
+            int carry = 0;
+           
+           
+                for (int j = 0; j < list1.Size(); j++)
+                {
+                    int A = Convert.ToInt32(list1.GetValue(j));
+                    for (int k=0;k<list2.Size();k++)
+                    {
+                    int multiply = A*(Convert.ToInt32(list2.GetValue(k)));
+                    finalList.InsertAtTail(multiply);
+                    }
+                }
+         
+            return finalList;
+        }
     }
 }
