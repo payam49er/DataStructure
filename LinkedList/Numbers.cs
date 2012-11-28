@@ -57,31 +57,35 @@ namespace LinkedList
                       }
                 }                       
                  
-            //when the lists are not of the same size and list1 is bigger than list2
+            //when the lists are not of the same size
 
             if (sizeDiff != 0)
             {
 
                 for (int i = 0; i < biggerSize; i++)
                 {
-                    // loop is in the range of both lists, so values from both lists till the proper size difference are going to be passed
-                    if (i <= sizeDiff-1)
+                    if (list1.GetValue(i) == null)
+                    {
+                        int B = Convert.ToInt32(list2.GetValue(i));
+                        bufferList.InsertAtTail(B);
+                    }
+                    if (list2.GetValue(i) == null)
+                    {
+                        int A = Convert.ToInt32(list1.GetValue(i));
+                        bufferList.InsertAtTail(A);
+                    }
+                    if (list1.GetValue(i) != null && list2.GetValue(i) != null)
                     {
                         int A = Convert.ToInt32(list1.GetValue(i));
                         int B = Convert.ToInt32(list2.GetValue(i));
                         bufferList.InsertAtTail(A + B);
                     }
-                     
-                    
-                    // loop is going to pass the size of the smaller list, so it only passes valules from bigger list (list1)
-                    if (i > sizeDiff-1)
-                    {
-                        int A = Convert.ToInt32(list1.GetValue(i));
-                        bufferList.InsertAtTail(A);
-                    }
                 }
-
             }
+
+
+                    
+                  
 
             //these two lines are just for testing 
             Console.WriteLine("This is the buffer list:");
