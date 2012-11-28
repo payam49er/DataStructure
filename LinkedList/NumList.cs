@@ -30,13 +30,13 @@ namespace LinkedList
             var secondcount = secondvalues.Size();
             Console.WriteLine("the size of second list is:{0}", secondcount);
 
-             SingleyLinkedList addResult = mylist.AddLists(firstvalues, secondvalues);
-             Console.WriteLine("The addition result is:");
-             mylist.Display(addResult);
+            SingleyLinkedList addResult = mylist.AddLists(firstvalues, secondvalues);
+            Console.WriteLine("The addition result is:");
+            mylist.Display(addResult);
 
-             SingleyLinkedList subtracLists = mylist.Subtrac(firstvalues, secondvalues);
-             Console.WriteLine("The Subtraction result is:");
-             mylist.Display(subtracLists);
+            SingleyLinkedList subtracLists = mylist.Subtrac(firstvalues, secondvalues);
+            Console.WriteLine("The Subtraction result is:");
+            mylist.Display(subtracLists);
 
              SingleyLinkedList multipliedLists = mylist.Multiply(firstvalues, secondvalues);
              Console.WriteLine("the Multiplication result is:");

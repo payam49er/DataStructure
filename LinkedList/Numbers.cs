@@ -33,7 +33,7 @@ namespace LinkedList
         }
 
 
-        //method to add two linkedlist elements to each other, the return is in the form of a string 
+        //method to add two linkedlist elements to each other, the return is in the form of a string , list1 has to be equal or bigger in size than link2
         public SingleyLinkedList AddLists(SingleyLinkedList list1, SingleyLinkedList list2)
         {
             //create a buffeer linked list that contains only added numbers
@@ -44,31 +44,45 @@ namespace LinkedList
             int sizeList1 = list1.Size();
             int sizeList2 = list2.Size();
             int biggerSize = Math.Max(sizeList1, sizeList2);
-            //equalizing the size of both lists, making math operations easier
-            if(sizeList1 > sizeList2)
-            {
-                for(int i=0; i<(sizeList1-sizeList2);i++)
-                {
+         
+            int sizeDiff = Math.Abs(list1.Size() - list2.Size());
 
-                list2.InsertAtTail(0);
-                }
-            }
-            else if(sizeList2 > sizeList1)
-            {
-                for(int i=0; i <(sizeList2-sizeList1);i++)
+            if (sizeDiff == 0)   //both lists are of the same size
                 {
-                list1.InsertAtTail(0);
+                  for(int i =0 ; i < biggerSize; i++)
+                      {
+                         int A = Convert.ToInt32(list1.GetValue(i));
+                         int B = Convert.ToInt32(list2.GetValue(i));
+                         bufferList.InsertAtTail(A + B);
+                      }
+                }                       
+                 
+            //when the lists are not of the same size and list1 is bigger than list2
+
+            if (sizeDiff != 0)
+            {
+
+                for (int i = 0; i < biggerSize; i++)
+                {
+                    // loop is in the range of both lists, so values from both lists till the proper size difference are going to be passed
+                    if (i <= sizeDiff-1)
+                    {
+                        int A = Convert.ToInt32(list1.GetValue(i));
+                        int B = Convert.ToInt32(list2.GetValue(i));
+                        bufferList.InsertAtTail(A + B);
+                    }
+                     
+                    
+                    // loop is going to pass the size of the smaller list, so it only passes valules from bigger list (list1)
+                    if (i > sizeDiff-1)
+                    {
+                        int A = Convert.ToInt32(list1.GetValue(i));
+                        bufferList.InsertAtTail(A);
+                    }
                 }
+
             }
 
-            for (int i = 0; i < biggerSize; i++)
-            {
-                int A = Convert.ToInt32(list1.GetValue(i));
-                int B = Convert.ToInt32(list2.GetValue(i));
-                int AddedAB = A + B;
-                bufferList.InsertAtTail(AddedAB);
-                
-            }
             //these two lines are just for testing 
             Console.WriteLine("This is the buffer list:");
             bufferList.Display(bufferList);
@@ -88,42 +102,43 @@ namespace LinkedList
                    carry = carry / 10;
                }
             return finalList;
+            
         }
 
 
         //this method subtracs two linked lists digits from each other, first list parameter has to be bigger than the second
 
-        public SingleyLinkedList Subtrac(SingleyLinkedList list1, SingleyLinkedList list2)
+        public SingleyLinkedList Subtrac(SingleyLinkedList list3, SingleyLinkedList list4)
         {
             
             SingleyLinkedList subtractionList = new SingleyLinkedList();
             
             //finding the bigger list size
-            int sizeList1 = list1.Size();
-            int sizeList2 = list2.Size();
-            int biggerSize = Math.Max(sizeList1, sizeList2);
+            int sizeList3 = list3.Size();
+            int sizeList4 = list4.Size();
+            int biggerSize = Math.Max(sizeList3, sizeList4);
             //equalizing the size of both lists, making math operations easier
-            if (sizeList1 > sizeList2)
+            if (sizeList3 > sizeList4)
             {
-                for (int i = 0; i < (sizeList1 - sizeList2); i++)
+                for (int i = 0; i < (sizeList3 - sizeList4); i++)
                 {
 
-                    list2.InsertAtTail(0);
+                    list4.InsertAtTail(0);
                 }
             }
-            else if (sizeList2 > sizeList1)
+            else if (sizeList4 > sizeList3)
             {
-                for (int i = 0; i < (sizeList2 - sizeList1); i++)
+                for (int i = 0; i < (sizeList4 - sizeList3); i++)
                 {
-                    list1.InsertAtTail(0);
+                    list3.InsertAtTail(0);
                 }
             }
 
             int carry = 0;
             for (int i = 0; i < biggerSize; i++)
             {
-                int A = Convert.ToInt32(list1.GetValue(i))+carry;
-                int B = Convert.ToInt32(list2.GetValue(i));
+                int A = Convert.ToInt32(list3.GetValue(i))+carry;
+                int B = Convert.ToInt32(list4.GetValue(i));
                 if (A < B)
                 {
                     A = A + 10;
@@ -141,42 +156,38 @@ namespace LinkedList
         }
            
         // this method multiplies two numbers that are held in singly linked list
-        public SingleyLinkedList Multiply(SingleyLinkedList list1, SingleyLinkedList list2)
+        public SingleyLinkedList Multiply(SingleyLinkedList list5, SingleyLinkedList list6)
         {
-            SingleyLinkedList finalList = new SingleyLinkedList();
+            SingleyLinkedList tempList = new SingleyLinkedList();
             int carry = 0;
-            for (int i = 0; i < list2.Size(); i++)
+            for (int i = 0; i < list6.Size(); i++)
             {
 
-                int A = Convert.ToInt32(list2.GetValue(i));
-                for (int j = 0; j < list1.Size(); j++)
+                int A = Convert.ToInt32(list6.GetValue(i));
+
+                for (int j = 0; j < list5.Size(); j++)
                 {
-                    int multi = (A * (Convert.ToInt32(list1.GetValue(j))))+carry;
+                    int multi = (A * (Convert.ToInt32(list5.GetValue(j))))+carry;
                     
                     if (multi >= 10)
                     {
-                        carry = 10;
+                        carry = 1;
                         int result = multi % 10;
+                        tempList.InsertAtFront(result);
                     }
                     else
                     {
                         carry = 0;
+                        tempList.InsertAtFront(multi);
                     }
-
-
-                    finalList.InsertAtFront(multi);
+                                    
                     
                 }
 
-                while (carry > 0)
-                {
-                    finalList.InsertAtFront(carry % 10);
-                    carry = carry / 10;
-                }
             }
 
          
-            return finalList;
+            return tempList;
         }
     }
 }
