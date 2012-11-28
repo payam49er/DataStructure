@@ -129,6 +129,11 @@ namespace LinkedList
                     A = A + 10;
                     carry = -1;
                 }
+                else
+                {
+                    carry = 0;
+                }
+
                 int SubtractedAB = A - B;
                 subtractionList.InsertAtFront(SubtractedAB);
             }
@@ -140,17 +145,36 @@ namespace LinkedList
         {
             SingleyLinkedList finalList = new SingleyLinkedList();
             int carry = 0;
-           
-           
+            for (int i = 0; i < list2.Size(); i++)
+            {
+
+                int A = Convert.ToInt32(list2.GetValue(i));
                 for (int j = 0; j < list1.Size(); j++)
                 {
-                    int A = Convert.ToInt32(list1.GetValue(j));
-                    for (int k=0;k<list2.Size();k++)
+                    int multi = (A * (Convert.ToInt32(list1.GetValue(j))))+carry;
+                    
+                    if (multi >= 10)
                     {
-                    int multiply = A*(Convert.ToInt32(list2.GetValue(k)));
-                    finalList.InsertAtTail(multiply);
+                        carry = 10;
+                        int result = multi % 10;
                     }
+                    else
+                    {
+                        carry = 0;
+                    }
+
+
+                    finalList.InsertAtFront(multi);
+                    
                 }
+
+                while (carry > 0)
+                {
+                    finalList.InsertAtFront(carry % 10);
+                    carry = carry / 10;
+                }
+            }
+
          
             return finalList;
         }
