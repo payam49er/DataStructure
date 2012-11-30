@@ -83,14 +83,10 @@ namespace LinkedList
                 }
             }
 
-
-                    
-                  
-
-            //these two lines are just for testing 
-            Console.WriteLine("This is the buffer list:");
-            bufferList.Display(bufferList);
-           // return bufferList;
+           // //these two lines are just for testing 
+           // Console.WriteLine("This is the buffer list:");
+           // bufferList.Display(bufferList);
+           //// return bufferList;
 
             int carry = 0;
             for (int i = 0; i < bufferList.Size(); i++)
@@ -112,86 +108,103 @@ namespace LinkedList
 
         //this method subtracs two linked lists digits from each other, first list parameter has to be bigger than the second
 
-        public SingleyLinkedList Subtrac(SingleyLinkedList list3, SingleyLinkedList list4)
+        public SingleyLinkedList Subtrac(SingleyLinkedList list1, SingleyLinkedList list2)
         {
             
             SingleyLinkedList subtractionList = new SingleyLinkedList();
-            
+            SingleyLinkedList finalList = new SingleyLinkedList();
             //finding the bigger list size
-            int sizeList3 = list3.Size();
-            int sizeList4 = list4.Size();
-            int biggerSize = Math.Max(sizeList3, sizeList4);
-            //equalizing the size of both lists, making math operations easier
-            if (sizeList3 > sizeList4)
-            {
-                for (int i = 0; i < (sizeList3 - sizeList4); i++)
-                {
-
-                    list4.InsertAtTail(0);
-                }
-            }
-            else if (sizeList4 > sizeList3)
-            {
-                for (int i = 0; i < (sizeList4 - sizeList3); i++)
-                {
-                    list3.InsertAtTail(0);
-                }
-            }
-
+            
+            int biggerSize = Math.Max(list1.Size(),list2.Size());
             int carry = 0;
             for (int i = 0; i < biggerSize; i++)
             {
-                int A = Convert.ToInt32(list3.GetValue(i))+carry;
-                int B = Convert.ToInt32(list4.GetValue(i));
-                if (A < B)
-                {
-                    A = A + 10;
-                    carry = -1;
-                }
-                else
-                {
-                    carry = 0;
-                }
+              
+               if (list2.GetValue(i) == null)
+               {
+                   int A = Convert.ToInt32(list1.GetValue(i))+carry;
+                   subtractionList.InsertAtFront(A);
+                   carry = 0;
+               }
 
-                int SubtractedAB = A - B;
-                subtractionList.InsertAtFront(SubtractedAB);
+               if (list1.GetValue(i) !=null && list2.GetValue(i) !=null)
+               {
+                   int A = Convert.ToInt32(list1.GetValue(i))+carry;
+                   int B = Convert.ToInt32(list2.GetValue(i));
+                   if (A < B)
+                   {
+                       A = A + 10;
+                       carry = -1;
+                   }
+                   else
+                   {
+                       carry = 0;
+                   }
+                   subtractionList.InsertAtFront(A-B);
+               }
             }
+           
             return subtractionList;
         }
+ 
            
-        // this method multiplies two numbers that are held in singly linked list
-        public SingleyLinkedList Multiply(SingleyLinkedList list5, SingleyLinkedList list6)
+        // this method multiplies two numbers that are held in singly linked list, assuming list1 has more digits than list2 
+        public SingleyLinkedList Multiply(SingleyLinkedList list1, SingleyLinkedList list2)
         {
-            SingleyLinkedList tempList = new SingleyLinkedList();
-            int carry = 0;
-            for (int i = 0; i < list6.Size(); i++)
+            SingleyLinkedList multiplyList = new SingleyLinkedList();
+            SingleyLinkedList tempList1 = new SingleyLinkedList();
+            SingleyLinkedList tempList2 = new SingleyLinkedList();
+          
+            for (int j = 0; j < list2.Size(); j++)
+            {
+                int carry = 0;
+                int B = Convert.ToInt32(list2.GetValue(j));
+                
+                for (int k = 0; k < list1.Size(); k++)
+                {
+                    
+                    int A = Convert.ToInt32(list1.GetValue(k));
+                   
+                    if (k == list1.Size()-1)
+                    {
+                        int multiply = ((A * B) + carry);
+                        multiplyList.InsertAtFront(multiply);
+                        carry = 0;
+                    }
+                    if (k < list1.Size()-1)
+                    {
+                        int multiply = ((A * B) + carry) % 10;
+                        multiplyList.InsertAtFront(multiply);
+                        carry = 0;
+                    }
+                    carry = (int)((A * B) / 10);
+                }
+            }
+          //return multiplyList;
+         
+            for ( int t = 0 ; t < list2.Size() ; t++)
             {
 
-                int A = Convert.ToInt32(list6.GetValue(i));
-
-                for (int j = 0; j < list5.Size(); j++)
+                for (int n = 0; n < list1.Size(); n++)
                 {
-                    int multi = (A * (Convert.ToInt32(list5.GetValue(j))))+carry;
-                    
-                    if (multi >= 10)
-                    {
-                        carry = 1;
-                        int result = multi % 10;
-                        tempList.InsertAtFront(result);
-                    }
-                    else
-                    {
-                        carry = 0;
-                        tempList.InsertAtFront(multi);
-                    }
-                                    
-                    
+                    int val = Convert.ToInt32(multiplyList.GetValue(n));
+                    tempList1.InsertAtFront(val);
                 }
-
+                
+                                
+                for (int m = 0; m < list2.Size() - 1; m++)
+                {
+                    tempList1.InsertAtFront(0);
+                }
+                
             }
 
-         
-            return tempList;
+            return tempList1;
+            
+              
+
+
         }
+        
     }
 }

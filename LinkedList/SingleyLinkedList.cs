@@ -176,10 +176,11 @@ namespace LinkedList
                 {
                     currentIndex++;
                     current = current.Link;
-                    if (currentIndex == index)
-                    {
+                    if (currentIndex == index && current != null)
                         return current.Data;
-                    }
+                    else if (current == null)
+                        return null;
+                     
                 }
                 return null;
             }

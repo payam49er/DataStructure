@@ -15,14 +15,14 @@ namespace LinkedList
             var firstvalues = mylist.CreateList(input1);
 
 
-            Console.WriteLine("The elements in the list are:");
-            mylist.Display(firstvalues);
+            //Console.WriteLine("The elements in the list are:");
+            //mylist.Display(firstvalues);
 
             Console.WriteLine("Please insert your second list of numbers:");
             string input2 = Console.ReadLine();
             var secondvalues = mylist.CreateList(input2);
-            Console.WriteLine("The elements in your second list are:");
-            mylist.Display(secondvalues);
+            //Console.WriteLine("The elements in your second list are:");
+            //mylist.Display(secondvalues);
 
             var count = firstvalues.Size();
             Console.WriteLine("the size of first list is:{0}", count);
