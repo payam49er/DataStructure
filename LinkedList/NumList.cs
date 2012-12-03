@@ -39,7 +39,7 @@ namespace LinkedList
             mylist.Display(subtracLists);
 
              SingleyLinkedList multipliedLists = mylist.Multiply(firstvalues, secondvalues);
-             Console.WriteLine("the Multiplication result is:");
+             Console.WriteLine("the Multiplication bufflist result is:");
              mylist.Display(multipliedLists);
 
            Console.ReadLine();
