@@ -33,7 +33,7 @@ namespace LinkedList
         }
 
 
-        //method to add two linkedlist elements to each other, the return is in the form of a string , list1 has to be equal or bigger in size than link2
+        //method to add two linkedlist elements to each other, the return is in the form of a Linked List
         public SingleyLinkedList AddLists(SingleyLinkedList list1, SingleyLinkedList list2)
         {
             if (list2.Size() == 0)
@@ -168,10 +168,11 @@ namespace LinkedList
             SingleyLinkedList multiplyList = new SingleyLinkedList();
             SingleyLinkedList buffList = new SingleyLinkedList();
             SingleyLinkedList finalList = new SingleyLinkedList();
-
-            for (int j = 0; j < list2.Size(); j++)
+            
+            for (int j = 0; j < list2.Size() ; j++)
             {
                 int carry = 0;
+               
                 int B = Convert.ToInt32(list2.GetValue(j));
 
                 for (int k = 0; k < list1.Size(); k++)
@@ -192,15 +193,20 @@ namespace LinkedList
                         int multiply = ((A * B) + carry);
                         multiplyList.InsertAtFront(multiply);
                     }
+
                 }
-                //for (int m = 0; m < list2.Size() - 1; m++) //Adding extra zero in front of the list to build up the 10th
+                
+                //for (int m = 0; m < j; m++)
                 //{
-                //    multiplyList.InsertAtFront(0);
+                //    multiplyList.InsertAtTail(0);
                 //}
-                buffList = AddLists(multiplyList, buffList);
+               
+                multiplyList = AddLists(multiplyList, buffList);
+                multiplyList.EmptyList();
             }
 
-            return buffList;
+          
+            return multiplyList;
 
         }
   

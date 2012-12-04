@@ -161,7 +161,20 @@ namespace LinkedList
             return 0;
 
         }
-       // Define method Get() that can get elements in the linkedlist return them
+
+        //define a method to delete the elements inside of the linkedlist
+        public void EmptyList()
+        {
+            while (firstNode != null)
+            {
+                firstNode = lastNode = null;
+
+            }
+           
+        }
+
+
+        // Define method Get() that can get elements in the linkedlist return them
         public object GetValue(int index)
         {
             if (index == 0)
